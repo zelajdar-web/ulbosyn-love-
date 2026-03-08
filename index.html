@@ -55,31 +55,32 @@ padding:20px;
 }
 
 h1{
-font-size:48px;
+font-size:50px;
 color:#ff2e7a;
-text-shadow:0 0 10px #ff2e7a,0 0 20px #ff8ecf;
+text-shadow:0 0 10px #ff2e7a,0 0 25px #ff8ecf,0 0 35px #ffc0cb;
 animation: glow 2s ease-in-out infinite alternate;
 }
 
 @keyframes glow{
 0%{text-shadow:0 0 5px #ff2e7a;}
-100%{text-shadow:0 0 25px #ff8ecf,0 0 35px #ff2e7a;}
+100%{text-shadow:0 0 25px #ff8ecf,0 0 35px #ffc0cb;}
 }
 
 .photo img{
-width:280px;
+width:300px;
 border-radius:25px;
-box-shadow:0 12px 25px rgba(0,0,0,0.3);
+box-shadow:0 15px 30px rgba(0,0,0,0.3);
 margin-top:20px;
-transition: transform 0.5s;
+transition: transform 0.5s, box-shadow 0.5s;
 }
 .photo img:hover{
-transform: scale(1.08);
+transform: scale(1.12);
+box-shadow:0 20px 40px rgba(0,0,0,0.5);
 }
 
 button{
 margin-top:25px;
-padding:15px 32px;
+padding:15px 35px;
 font-size:18px;
 border:none;
 border-radius:15px;
@@ -90,26 +91,31 @@ cursor:pointer;
 
 #surprise{
 display:none;
-font-size:30px;
+font-size:32px;
 margin-top:20px;
 color:#ff2e7a;
 font-weight:bold;
+animation: pulse 1.5s infinite;
 }
 
 #letter{
 display:none;
 margin-top:20px;
 font-size:22px;
-max-width:650px;
+max-width:700px;
 margin-left:auto;
 margin-right:auto;
 line-height:1.5;
 color:#333;
+background: rgba(255,255,255,0.8);
+padding:15px;
+border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,0.2);
 }
 
 #love{
 margin-top:30px;
-font-size:44px;
+font-size:50px;
 color:#ff2e7a;
 font-weight:bold;
 animation:pulse 1.5s infinite;
@@ -121,7 +127,7 @@ animation:pulse 1.5s infinite;
 100%{transform:scale(1);}
 }
 
-.emoji{
+.falling{
 position:fixed;
 top:-10px;
 font-size:24px;
@@ -163,7 +169,8 @@ pointer-events:none;
 <div id="letter">
 Дорогая Улбосын,  
 Желаю тебе счастья, улыбок и любви каждый день.  
-Пусть все твои мечты сбываются ✨
+Пусть все твои мечты сбываются ✨  
+💖🌸🌈✨❤️💎
 </div>
 
 <div id="love">
@@ -196,18 +203,19 @@ function showLetter(){
   document.getElementById("letter").style.display="block";
 }
 
-function createEmojis(){
-  const emojis=["❤️","🌸","✨","💖","🌈","💎"];
-  const emoji=document.createElement("div");
-  emoji.classList.add("emoji");
-  emoji.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
-  emoji.style.left=Math.random()*100+"vw";
-  emoji.style.animationDuration=(3+Math.random()*5)+"s";
-  document.body.appendChild(emoji);
-  setTimeout(()=>{emoji.remove();},9000);
+function createFalling(){
+  const emojis=["❤️","🌸","✨","💖","🌈","💎","🎀","🦋"];
+  const e=document.createElement("div");
+  e.classList.add("falling");
+  e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+  e.style.left=Math.random()*100+"vw";
+  e.style.animationDuration=(3+Math.random()*5)+"s";
+  e.style.fontSize=(16+Math.random()*20)+"px";
+  document.body.appendChild(e);
+  setTimeout(()=>{e.remove();},9000);
 }
 
-setInterval(createEmojis,200);
+setInterval(createFalling,150);
 </script>
 
 </body>

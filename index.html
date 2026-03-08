@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Для Улбосын ❤️</title>
+<style>
+body{
+margin:0;
+font-family:Arial, sans-serif;
+text-align:center;
+overflow-x:hidden;
+background: linear-gradient(270deg,#ff9ecf,#ffd6ec,#fffd7e,#7effc4,#7ecbff,#d57eff);
+background-size: 1200% 1200%;
+animation: rainbow 15s ease infinite;
+}
+
+@keyframes rainbow{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+#passwordScreen{
+position:fixed;
+width:100%;
+height:100%;
+background:#ffe6f0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+}
+
+#passwordScreen input{
+padding:12px;
+font-size:18px;
+border-radius:10px;
+border:2px solid #ff2e7a;
+margin-bottom:20px;
+}
+
+#passwordScreen button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:10px;
+background:#ff2e7a;
+color:white;
+cursor:pointer;
+}
+
+.container{
+display:none;
+padding:20px;
+}
+
+h1{
+font-size:48px;
+color:#ff2e7a;
+text-shadow:0 0 10px #ff2e7a,0 0 20px #ff8ecf;
+animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow{
+0%{text-shadow:0 0 5px #ff2e7a;}
+100%{text-shadow:0 0 25px #ff8ecf,0 0 35px #ff2e7a;}
+}
+
+.photo img{
+width:280px;
+border-radius:25px;
+box-shadow:0 12px 25px rgba(0,0,0,0.3);
+margin-top:20px;
+transition: transform 0.5s;
+}
+.photo img:hover{
+transform: scale(1.08);
+}
+
+button{
+margin-top:25px;
+padding:15px 32px;
+font-size:18px;
+border:none;
+border-radius:15px;
+background:#ff2e7a;
+color:white;
+cursor:pointer;
+}
+
+#surprise{
+display:none;
+font-size:30px;
+margin-top:20px;
+color:#ff2e7a;
+font-weight:bold;
+}
+
+#letter{
+display:none;
+margin-top:20px;
+font-size:22px;
+max-width:650px;
+margin-left:auto;
+margin-right:auto;
+line-height:1.5;
+color:#333;
+}
+
+#love{
+margin-top:30px;
+font-size:44px;
+color:#ff2e7a;
+font-weight:bold;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.25);}
+100%{transform:scale(1);}
+}
+
+.emoji{
+position:fixed;
+top:-10px;
+font-size:24px;
+animation:fall linear infinite;
+pointer-events:none;
+}
+</style>
+</head>
+<body>
+
+<div id="passwordScreen">
+<h2>Введите пароль</h2>
+<input type="password" id="passwordInput" placeholder="Пароль">
+<button onclick="checkPassword()">Войти</button>
+<p id="errorMsg" style="color:red;display:none;">Неверный пароль!</p>
+</div>
+
+<div class="container" id="content">
+
+<h1>С 8 Марта, Улбосын 🌷</h1>
+
+<p>
+Ты — моя весна, моя улыбка и моя радость ✨  
+Пусть каждый день будет наполнен светом, счастьем и любовью ❤️
+</p>
+
+<div class="photo">
+<img src="photo.jpg">
+</div>
+
+<button onclick="showSurprise()">Нажми сюрприз 🎁</button>
+
+<div id="surprise">
+Ты невероятная и самая особенная!
+</div>
+
+<button onclick="showLetter()">Открыть письмо 💌</button>
+
+<div id="letter">
+Дорогая Улбосын,  
+Желаю тебе счастья, улыбок и любви каждый день.  
+Пусть все твои мечты сбываются ✨
+</div>
+
+<div id="love">
+I ❤️ Ulbosyn
+</div>
+
+<audio autoplay loop>
+<source src="love-me.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<script>
+function checkPassword(){
+  const password="myqueen";
+  const input=document.getElementById("passwordInput").value;
+  if(input===password){
+    document.getElementById("passwordScreen").style.display="none";
+    document.getElementById("content").style.display="block";
+  } else {
+    document.getElementById("errorMsg").style.display="block";
+  }
+}
+
+function showSurprise(){
+  document.getElementById("surprise").style.display="block";
+}
+
+function showLetter(){
+  document.getElementById("letter").style.display="block";
+}
+
+function createEmojis(){
+  const emojis=["❤️","🌸","✨","💖","🌈","💎"];
+  const emoji=document.createElement("div");
+  emoji.classList.add("emoji");
+  emoji.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+  emoji.style.left=Math.random()*100+"vw";
+  emoji.style.animationDuration=(3+Math.random()*5)+"s";
+  document.body.appendChild(emoji);
+  setTimeout(()=>{emoji.remove();},9000);
+}
+
+setInterval(createEmojis,200);
+</script>
+
+</body>
+</html>
